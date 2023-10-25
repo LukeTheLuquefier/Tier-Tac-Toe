@@ -71,6 +71,7 @@ a : To enable AI
 
         int CheckMove(char inputspace, char inputnumber)
         {
+
             return 0;
         }
 
@@ -143,6 +144,7 @@ a : To enable AI
                 }
             }
             Thread.Sleep(4000);
+            Write("hello12345");
             gameMode = GameModeSelect();
         }
         
