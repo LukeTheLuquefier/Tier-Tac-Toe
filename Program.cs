@@ -42,7 +42,7 @@ class Program
             WriteLine(
 @$"Commands:
 s : To skip game
-a : To enable Ai
+a : To enable AI
 --------------
  1 | 2 | 3 
 {emptyLine}
