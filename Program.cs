@@ -8,12 +8,11 @@ class Program
     static void Main(string[] args)
     {
         char?[,] spaces = new char?[9,2];
-
         void ResetBoard(char gameMode1)
         {
             if (gameMode1 == '1' || gameMode1 == '2')
             {
-                char?[,] spaces = new char?[9, 2];
+                spaces = new char?[9, 2];
                 for (int boardNum = 0; boardNum < 9; boardNum++)
                 {
                     spaces[boardNum, 0] = ' ';
@@ -145,6 +144,7 @@ a : To enable AI
             {
                 PrintBoard();
                 MakeMove(currentPlayer);
+                WriteLine(Convert.ToString(spaces[2, 0]));
 
                 if (round == ((gameMode == 2) ? 12 : 9))
                 {
