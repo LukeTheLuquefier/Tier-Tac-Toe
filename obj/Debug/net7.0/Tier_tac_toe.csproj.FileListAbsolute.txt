@@ -12,3 +12,17 @@ C:\Users\Luke Erickson\source\repos\Tier_tac_toe\obj\Debug\net7.0\refint\Tier_ta
 C:\Users\Luke Erickson\source\repos\Tier_tac_toe\obj\Debug\net7.0\Tier_tac_toe.pdb
 C:\Users\Luke Erickson\source\repos\Tier_tac_toe\obj\Debug\net7.0\Tier_tac_toe.genruntimeconfig.cache
 C:\Users\Luke Erickson\source\repos\Tier_tac_toe\obj\Debug\net7.0\ref\Tier_tac_toe.dll
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\obj\Debug\net7.0\Tier_tac_toe.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\obj\Debug\net7.0\Tier_tac_toe.AssemblyInfoInputs.cache
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\obj\Debug\net7.0\Tier_tac_toe.AssemblyInfo.cs
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\obj\Debug\net7.0\Tier_tac_toe.csproj.CoreCompileInputs.cache
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\obj\Debug\net7.0\Tier_tac_toe.dll
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\obj\Debug\net7.0\refint\Tier_tac_toe.dll
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\obj\Debug\net7.0\Tier_tac_toe.pdb
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\bin\Debug\net7.0\Tier_tac_toe.exe
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\bin\Debug\net7.0\Tier_tac_toe.deps.json
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\bin\Debug\net7.0\Tier_tac_toe.runtimeconfig.json
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\bin\Debug\net7.0\Tier_tac_toe.dll
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\bin\Debug\net7.0\Tier_tac_toe.pdb
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\obj\Debug\net7.0\Tier_tac_toe.genruntimeconfig.cache
+C:\Users\Luke Erickson\source\repos\Tier-Tac-Toe\obj\Debug\net7.0\ref\Tier_tac_toe.dll

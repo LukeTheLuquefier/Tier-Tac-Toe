@@ -8,13 +8,17 @@ class Program
     static void Main(string[] args)
     {
         char?[,] spaces = new char?[9,2];
-        
-        void ResetBoard()
+
+        void ResetBoard(char gameMode1)
         {
-            for (int boardNum = 0; boardNum < 9; boardNum++)
+            if (gameMode1 == '1' || gameMode1 == '2')
             {
-                spaces[boardNum,0] = ' ';
-                spaces[boardNum,1] = '0';
+                char?[,] spaces = new char?[9, 2];
+                for (int boardNum = 0; boardNum < 9; boardNum++)
+                {
+                    spaces[boardNum, 0] = ' ';
+                    spaces[boardNum, 1] = '0';
+                }
             }
         }
 
@@ -69,26 +73,27 @@ a : To enable AI
             }
         }
 
-        int CheckMove(char inputspace, char inputnumber)
+        char currentPlayer11 = '0';
+        int CheckMove(int inputspace, char inputnumber, char currentPlayer11)
         {
 
             return 0;
         }
 
-        char selectedSpace;
+        int selectedSpace;
         char selectedNumber;
         int correctInput = 1;
-        void MakeMove()
+        void MakeMove(char currentPlayer1)
         {
             while (correctInput != 0)
             {
                 correctInput = 0;
                 Write("Select space: ");
-                selectedSpace = ReadKey().KeyChar;
+                selectedSpace = Convert.ToInt32(ReadKey().KeyChar);
                 WriteLine("");
                 Write("Select number: ");
                 selectedNumber = ReadKey().KeyChar;
-                correctInput = CheckMove(selectedSpace, selectedNumber);
+                correctInput = CheckMove(selectedSpace, selectedNumber, currentPlayer11);
                     if (correctInput != 0)
                 {
                     Clear();
@@ -128,19 +133,23 @@ a : To enable AI
 
 
         char gameMode = GameModeSelect();
-        bool win = false;
+        int win;
         int condition = 0;
+        char currentPlayer = '0';
         while (gameMode != 'e')
         {
-            ResetBoard();
-            for (int round = 1; round <= ((gameMode == 2) ? 12 : 9); round++)
+            ResetBoard(gameMode);
+            win = 0;
+            currentPlayer = '0';
+            for (int round = 1; (round <= ((gameMode == 2) ? 12 : 9))&&(win == 0); round++)
             {
                 PrintBoard();
-                MakeMove();
+                MakeMove(currentPlayer);
 
                 if (round == ((gameMode == 2) ? 12 : 9))
                 {
                     Write("everyone has no more pieces");
+                    win = 3;
                 }
             }
             Thread.Sleep(4000);
