@@ -23,7 +23,7 @@ class Program
         string[,] ruleMenu =
         {
             {
-                "Rules, select to change:", "1 - Allows you to places numbers on your own smaller numbers", "r - Resets all rules"
+                "Rules, select to change:", "1 - Allows you to places numbers on your own smaller numbers: ", "r - Resets all rules"
             },
             {
                 "","1","r"
@@ -33,7 +33,16 @@ class Program
         {
             false, false
         };
-
+        int[] maxTurn =
+        {
+            9, 12
+        };
+        string interLine = " | ";
+        string emptyLine = "---+---+---";
+        int win;
+        int currentPlayer = 0;
+        int maxRounds;
+        bool toMainMenu = false;
 
         void ResetBoard(char gameMode1)
         {
@@ -64,8 +73,6 @@ class Program
         }
 
 
-        string interLine = " | ";
-        string emptyLine = "---+---+---";
         void PrintBoard()
         {
             Clear();
@@ -99,8 +106,7 @@ a : To enable AI
             }
         }
 
-        char currentPlayer11 = '0';
-        int CheckMove(int selectedSpace1, char selectedNumber1, char currentPlayer11, out int otherCodes)
+        int CheckMove(int selectedSpace1, char selectedNumber1, int currentPlayer11, out int otherCodes)
         {
             otherCodes = 1;
             return 0;
@@ -109,8 +115,9 @@ a : To enable AI
         int selectedSpace;
         char selectedNumber;
         int correctInput = 1;
-        void MakeMove(char currentPlayer1)
+        void MakeMove(int currentPlayer1, ref bool toMainMenu1)
         {
+            toMainMenu1 = false;
             while (correctInput != 0)
             {
                 correctInput = 0;
@@ -119,6 +126,7 @@ a : To enable AI
                 WriteLine("");
                 Write("Select number: ");
                 selectedNumber = ReadKey().KeyChar;
+                WriteLine("");
                 correctInput = CheckMove(selectedSpace, selectedNumber, currentPlayer1, out int otherCodes);
                     if (correctInput != 0)
                 {
@@ -130,12 +138,13 @@ a : To enable AI
         }
 
 
-        int CheckWinCons()
+        void CheckWinCons(ref int win1)
         {
-            return 9;
+
+            return;
         }
 
-        void WinChanges()
+        void WinChanges(int win1)
         {
 
         }
@@ -150,6 +159,7 @@ a : To enable AI
                 {
                     WriteLine(theMenu[0, number03]);
                 }
+                WriteLine("b - back");
                 char menuInput = ReadKey().KeyChar;
                 if (menuInput == 'b')
                 {
@@ -205,32 +215,40 @@ a : To enable AI
                         return 'e';
                 }
             }
-            return '0';
         }
 
 
-        char gameMode = MainMenuSelect();
-        int win;
-        int condition = 0;
-        char currentPlayer = '0';
-        while (gameMode != 'e')
+        void Game(char gameMode1)
         {
-            ResetBoard(gameMode);
+            ResetBoard(gameMode1);
             win = 0;
-            currentPlayer = '0';
-            for (int round = 1; (round <= ((gameMode == 2) ? 12 : 9))&&(win == 0); round++)
+            currentPlayer = 0;
+            maxRounds = maxTurn[Convert.ToInt32(Convert.ToString(gameMode1)) - 1];
+            for (int round = 1; round <= maxRounds && (win == 0); round++)
             {
                 PrintBoard();
-                MakeMove(currentPlayer);
-                WriteLine(Convert.ToString(spaces[2, 0]));
-
-                if (round == ((gameMode == 2) ? 12 : 9))
+                MakeMove(currentPlayer, ref toMainMenu);
+                if (toMainMenu)
+                    break;
+                WriteLine($"round: {round}    maxround: {maxRounds}");
+                Thread.Sleep(1000);
+                if (round == maxRounds)
                 {
                     Write("everyone has no more pieces");
                     win = 3;
                 }
             }
-            Thread.Sleep(4000);
+            if (!toMainMenu)
+            {
+                Thread.Sleep(4000);
+            }
+        }
+
+
+        char gameMode = MainMenuSelect();
+        while (gameMode != 'e')
+        {
+            Game(gameMode);
             gameMode = MainMenuSelect();
         }
         
