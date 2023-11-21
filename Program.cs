@@ -42,7 +42,7 @@ class Program
         int win;
         int currentPlayer = 0;
         int maxRounds;
-        bool toMainMenu = false;
+        int toMainMenu = 0;
 
         void ResetBoard(char gameMode1)
         {
@@ -78,8 +78,7 @@ class Program
             Clear();
             WriteLine(
 @$"Commands:
-s : To skip game
-a : To enable AI
+m - to go to main menu
 --------------
  1 | 2 | 3 
 {emptyLine}
@@ -106,29 +105,45 @@ a : To enable AI
             }
         }
 
-        int CheckMove(int selectedSpace1, char selectedNumber1, int currentPlayer11, out int otherCodes)
+        int CheckMove(char selectedSpace1, char selectedNumber1, int currentPlayer11)
         {
-            otherCodes = 1;
             return 0;
         }
 
-        int selectedSpace;
+        char selectedSpace;
         char selectedNumber;
         int correctInput = 1;
-        void MakeMove(int currentPlayer1, ref bool toMainMenu1)
+        void MakeMove(int currentPlayer1, ref int toMainMenu1)
         {
-            toMainMenu1 = false;
+            toMainMenu1 = 0;
+            correctInput = 1;
             while (correctInput != 0)
             {
                 correctInput = 0;
                 Write("Select space: ");
-                selectedSpace = Convert.ToInt32(ReadKey().KeyChar);
+                selectedSpace = ReadKey().KeyChar;
                 WriteLine("");
+                if (selectedSpace == 'm')
+                {
+                    toMainMenu1 = 1;
+                    return;
+                }
                 Write("Select number: ");
                 selectedNumber = ReadKey().KeyChar;
                 WriteLine("");
-                correctInput = CheckMove(selectedSpace, selectedNumber, currentPlayer1, out int otherCodes);
-                    if (correctInput != 0)
+                if (selectedNumber == 'm')
+                {
+                    toMainMenu1 = 1;
+                    return;
+                }
+
+                correctInput = CheckMove(selectedSpace, selectedNumber, currentPlayer1);
+                if (correctInput == 0)
+                {
+                    spaces[Convert.ToInt32(Convert.ToString(selectedSpace)), 0] = selectedNumber;
+                    spaces[Convert.ToInt32(Convert.ToString(selectedSpace))-1, 1] = Convert.ToChar(Convert.ToString(currentPlayer1));
+                }
+                else
                 {
                     Clear();
                     PrintBoard();
@@ -228,7 +243,7 @@ a : To enable AI
             {
                 PrintBoard();
                 MakeMove(currentPlayer, ref toMainMenu);
-                if (toMainMenu)
+                if (toMainMenu == 1)
                     break;
                 WriteLine($"round: {round}    maxround: {maxRounds}");
                 Thread.Sleep(1000);
@@ -238,7 +253,7 @@ a : To enable AI
                     win = 3;
                 }
             }
-            if (!toMainMenu)
+            if (toMainMenu == 0)
             {
                 Thread.Sleep(4000);
             }
